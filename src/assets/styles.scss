@@ -10,3 +10,11 @@ ul {
 li {
     list-style-type: none;
 }
+
+.action-open {
+    height: 600px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+}

@@ -12,8 +12,33 @@
             <li class='language__item'>DE</li>
             <li class='language__item'>EN</li>
         </div>
-        <div class='header__menu-mobile'>
-            <img src='../assets/img/header/menuMobile.png' alt='menu'/>
+        <div class='header__menu-mobile' @click="isOpen()">
+            <img v-if="menuMobileOpen" src='../assets/img/header/menu-close.png' alt='menu'/>
+            <img v-else src='../assets/img/header/menuMobile.png' alt='menu'/>
+        </div>
+    </div>
+    <div v-if="menuMobileOpen" class='menu-mobile'>
+        <div class='menu-mobile__item'>
+            Benefits
+        </div>
+        <div class='menu-mobile__item'>
+            Advantages
+        </div>
+        <div class='menu-mobile__item'>
+            Achievements
+        </div>
+        <div class='menu-mobile__item'>
+            Imprint and Data protection
+        </div>
+        <div class='menu-mobile__language language-mobile'>
+            <div class='language-mobile__text'>Language</div>
+            <div class='language-mobile__lang'>
+                <div class='language-mobile__lang_item'>DE</div>
+                <div class='language-mobile__lang_item'>EN</div>
+            </div>
+        </div>
+        <div  class='menu-mobile__button'>
+            <button>Request&nbsp;&nbsp;a free consultation</button>
         </div>
     </div>
 </header>
@@ -21,7 +46,23 @@
 
 <script>
 export default {
-  name: 'HeaderTest'
+  name: 'HeaderTest',
+  data () {
+    return {
+      menuMobileOpen: false
+    }
+  },
+  methods: {
+    isOpen () {
+      if (this.menuMobileOpen) {
+        this.menuMobileOpen = false
+        document.body.classList.remove('action-open')
+      } else {
+        this.menuMobileOpen = true
+        document.body.classList.add('action-open')
+      }
+    }
+  }
 }
 </script>
 
@@ -53,6 +94,7 @@ export default {
         background-image: url('../assets/img/logo/group-2.png');
         background-size: cover;
         margin-right: 75px;
+        cursor: pointer;
     }
 
     &__menu-mobile {
@@ -70,6 +112,7 @@ export default {
     &__item {
         width: 144px;
         text-align: center;
+        cursor: pointer;
         &:nth-child(2) {
             margin-right: 20px;
         }
@@ -84,6 +127,7 @@ export default {
         width: 56px;
         display: flex;
         justify-content: center;
+        cursor: pointer;
     }
 }
 
@@ -125,6 +169,7 @@ export default {
             min-width: 375px;
             padding: 40px 0px 40px 37px;
             margin-bottom: 101px;
+            margin: 0 auto;
             &__container {
                 max-width: 293px;
             }
@@ -136,6 +181,8 @@ export default {
             }
             &__menu-mobile {
                 display: block;
+                width: 24px;
+                height: 24px;
             }
     }
 
@@ -143,8 +190,82 @@ export default {
         display: none;
     }
 
+    .menu-mobile {
+        width: 375px;
+        height: 613px;
+        padding-top: 233px;
+
+        &__item {
+            height: 56px;
+            padding: 11px 40px 11px 2px;
+            box-sizing: border-box;
+            &:nth-child(4) {
+                margin-bottom: 50px;
+            }
+
+            font-family: 'Catamaran', sans-serif;
+            font-size: 21px;
+            font-weight: bold;
+            letter-spacing: -0.53px;
+        }
+
+        &__language {
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            justify-content: space-between;
+            width: 343px;
+            height: 56px;
+            padding: 11px 40px 11px 3px;
+            margin-bottom: 50px;
+
+            font-family: 'Catamaran', sans-serif;
+            font-size: 21px;
+            font-weight: bold;
+            letter-spacing: -0.53px;
+        }
+
+        &__button {
+            display: flex;
+            align-items: center;
+            margin-left: -21px;
+
+            button {
+                font-family: 'Catamaran', sans-serif;
+                font-size: 21px;
+                font-weight: 900;
+                letter-spacing: -0.53px;
+                text-align: center;
+                color: #fff;
+
+                width: 345px;
+                height: 44px;
+                border-radius: 72px;
+                background: rgba(8, 61, 119);
+                border: none;
+            }
+        }
+    }
+
     .language {
         display: none;
     }
+
+    .language-mobile {
+        &__lang {
+            display: flex;
+
+            font-family: 'Open Sans', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 0.13px;
+            text-align: center;
+
+            &_item {
+                width: 56px;
+            }
+        }
+    }
+
 }
 </style>

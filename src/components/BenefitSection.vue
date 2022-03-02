@@ -351,7 +351,7 @@ section {
             margin-bottom: 147px;
 
             &__background {
-                top: 348px;
+                top: 141px;
                 left: -610px;
             }
 
