@@ -10,32 +10,24 @@
 
         <div class='transport'>
             <div class='transport__carousel carousel'>
-                <div class='carousel__action action'>
-                    <div class='action__prev-arrow'>
-                        <img src='../assets/img/transport/prev-button.png' alt='prev'/>
-                    </div>
-                    <div class='action__dots'>
-                        <div class='dot dot_active'>
-                            <img  src='../assets/img/transport/active-selector-dot.png' alt='dot'/>
-                        </div>
-                        <div class='dot dot_disabled'>
-                            <img  src='../assets/img/transport/selector-dot.png' alt='dot'/>
-                        </div>
-                        <div class='dot dot_disabled'>
-                            <img  src='../assets/img/transport/selector-dot.png' alt='dot'/>
-                        </div>
-                    </div>
-                    <div class='action__next-arrow'>
-                        <img src='../assets/img/transport/next-button.png' alt='next'/>
-                    </div>
-                </div>
                 <div class='carousel__content'>
-                    <div class='content'>
-                        <div class='content__image'></div>
-                        <div class='content__title'>
-                            double truck day load capacity increase
-                        </div>
-                    </div>
+                    <Carousel
+                        :items-to-show="1.001"
+                        :wrapAround = "true"
+                    >
+                        <Slide v-for='slide in slides' :key="slide">
+                            <div class='content'>
+                                <div v-bind:class="slide.image"></div>
+                                <div class='content__title'>
+                                    double truck day load capacity increase
+                                </div>
+                            </div>
+                        </Slide>
+                        <template #addons>
+                            <Pagination />
+                            <Navigation />
+                        </template>
+                    </Carousel>
                 </div>
             </div>
 
@@ -67,12 +59,12 @@
                 Discuss your project with the professionals
             </div>
             <div class='discuss__button'>
-                <button>
+                <button @click="handleModalOpen()">
                     Let's discuss
                 </button>
             </div>
             <div class='discuss__button-mobile'>
-                <button>
+                <button @click="handleModalOpen()">
                     Request&nbsp;&nbsp;a free consultation
                 </button>
             </div>
@@ -82,8 +74,37 @@
 </template>
 
 <script>
+import { Carousel, Slide, Navigation, Pagination } from 'vue3-carousel'
+import 'vue3-carousel/dist/carousel.css'
 export default {
-  name: 'TransportManagementSection'
+  name: 'TransportManagementSection',
+  methods: {
+    handleModalOpen () {
+      this.$emit('open')
+      document.body.style.overflow = 'hidden'
+    }
+  },
+  data () {
+    return {
+      slides: [
+        {
+          image: 'content__image1'
+        },
+        {
+          image: 'content__image2'
+        },
+        {
+          image: 'content__image3'
+        }
+      ]
+    }
+  },
+  components: {
+    Carousel,
+    Slide,
+    Navigation,
+    Pagination
+  }
 }
 </script>
 
@@ -108,7 +129,7 @@ section {
 
         padding-left: 315px;
         padding-right: 105px;
-        margin-bottom: 102px;
+        margin-bottom: 120px;
     }
 
     .transport {
@@ -121,7 +142,7 @@ section {
         }
 
         &__info {
-            padding: 152px 20px 3px 18px;
+            padding: 34px 20px 3px 18px;
         }
     }
 
@@ -149,10 +170,35 @@ section {
 
     .content {
 
-        &__image {
+        &__image1 {
             width: 483px;
             height: 498px;
             background-image: url('../assets/img/transport/carousel-image1.png');
+            background-size: cover;
+            margin-top: -2px;
+            margin-left: -28px;
+            margin-bottom: 5px;
+
+            padding-right: 10px;
+        }
+
+        &__image2 {
+            width: 483px;
+            height: 498px;
+            background-image: url('../assets/img/transport/carousel-image2.png');
+            background-size: cover;
+            margin-top: -2px;
+            margin-left: -28px;
+            margin-bottom: 5px;
+
+            padding-right: 10px;
+        }
+
+        &__image3 {
+            width: 483px;
+            height: 498px;
+            background-image: url('../assets/img/transport/carousel-image3.png');
+            background-size: cover;
             margin-top: -2px;
             margin-left: -28px;
             margin-bottom: 5px;
@@ -161,7 +207,7 @@ section {
         }
 
         &__title {
-            width: 345px;
+            width: 405px;
             padding-left: 46px;
 
             font-family: 'Open Sans', sans-serif;
@@ -253,7 +299,7 @@ section {
             }
 
             &__info {
-                padding: 117px 0px 0px 9px;
+                padding: 34px 0px 0px 9px;
             }
         }
 
@@ -281,16 +327,27 @@ section {
         }
 
         .content {
-            &__image {
+            &__image1 {
                 width: 345px;
                 height: 366px;
                 background-image: url('../assets/img/transport/carousel-image1Tablet.png');
                 background-repeat: no-repeat;
+                margin-left: 14px;
+            }
+            &__image2 {
+                width: 345px;
+                height: 366px;
+                margin-left: 14px;
+            }
+            &__image3 {
+                width: 345px;
+                height: 366px;
+                margin-left: 14px;
             }
 
             &__title {
-                margin-left: -90px;
-                padding-left: 72px;
+                margin-left: -9px;
+                padding-left: 0px;
             }
         }
 
@@ -318,7 +375,7 @@ section {
     }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 376px) {
     section {
         margin-bottom: 77px;
         .wrapper {
@@ -328,11 +385,11 @@ section {
         .transport {
             flex-direction: column-reverse;
             padding-left: 15px;
-            margin-bottom: 290px;
+            margin-bottom: 580px;
 
             &__info {
                 padding: 40px 0px 0px 9px;
-                margin-bottom: 36px;
+                margin-bottom: 110px;
             }
         }
 
@@ -364,7 +421,7 @@ section {
             }
 
             &__title {
-                margin-left: -74px;
+                margin-left: -10px;
             }
         }
 

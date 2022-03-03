@@ -1,12 +1,13 @@
 <template>
 <div>
-<Header/>
-<LogisticsSection/>
+<Header @open='isModalOpen = true'/>
+<LogisticsSection @open='isModalOpen = true'/>
 <IssueSection/>
-<BenefitSection/>
-<AdvantagesSection/>
-<TransportManagementSection/>
+<BenefitSection @open='isModalOpen = true' id='benefit'/>
+<AdvantagesSection id='advantages'/>
+<TransportManagementSection @open='isModalOpen = true'/>
 <Footer/>
+<Modal v-if="isModalOpen" @close="isModalOpen = false" />
 </div>
 </template>
 
@@ -18,6 +19,7 @@ import BenefitSection from './BenefitSection.vue'
 import AdvantagesSection from './AdvantagesSection.vue'
 import TransportManagementSection from './TransportManagementSection.vue'
 import Footer from './Footer.vue'
+import Modal from './Modal.vue'
 
 export default {
   name: 'Main',
@@ -28,7 +30,24 @@ export default {
     BenefitSection,
     AdvantagesSection,
     TransportManagementSection,
-    Footer
+    Footer,
+    Modal
+  },
+  data () {
+    return {
+      isModalOpen: false
+    }
+  },
+  methods: {
+    handleModalOpen () {
+      if (this.isModalOpen) {
+        this.isModalOpen = false
+        document.body.classList.remove('modal-open')
+      } else {
+        this.isModalOpen = true
+        document.body.classList.add('modal-open')
+      }
+    }
   }
 }
 </script>

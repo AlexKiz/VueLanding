@@ -1,8 +1,10 @@
 <template>
 <section>
     <div class='content__scroll'>
-        <img  src='../assets/img/logistics/scroll-down-arrow.png' alt='arrow'/>
-        <span>Scroll to see our advantages</span>
+        <a href='#advantages'>
+            <img  src='../assets/img/logistics/scroll-down-arrow.png' alt='arrow'/>
+            <span>Scroll to see our advantages</span>
+        </a>
     </div>
     <div class='wrapper row'>
         <div class='benefit'>
@@ -89,7 +91,7 @@
         </div>
         <div class='discuss col-12'>
             <div class='discuss__button'>
-                <button>
+                <button @click="handleModalOpen()">
                     Fill in the contact form
                 </button>
             </div>
@@ -100,7 +102,13 @@
 
 <script>
 export default {
-  name: 'BenefitSection'
+  name: 'BenefitSection',
+  methods: {
+    handleModalOpen () {
+      this.$emit('open')
+      document.body.style.overflow = 'hidden'
+    }
+  }
 }
 </script>
 
@@ -134,8 +142,16 @@ section {
             object-fit: contain;
             transform: rotate(90deg);
             position: relative;
-            right: 37px;
+            right: 22px;
         }
+
+        a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-width: 207px;
+        }
+
     }
 
     .wrapper {
@@ -333,7 +349,7 @@ section {
     }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 376px) {
     section {
         margin-bottom: 170px;
 

@@ -38,7 +38,7 @@
             </div>
         </div>
         <div  class='menu-mobile__button'>
-            <button>Request&nbsp;&nbsp;a free consultation</button>
+            <button @click="handleModalOpen()">Request&nbsp;&nbsp;a free consultation</button>
         </div>
     </div>
 </header>
@@ -56,11 +56,15 @@ export default {
     isOpen () {
       if (this.menuMobileOpen) {
         this.menuMobileOpen = false
-        document.body.classList.remove('action-open')
+        document.body.style.overflow = ''
       } else {
         this.menuMobileOpen = true
-        document.body.classList.add('action-open')
+        document.body.style.overflow = 'hidden'
       }
+    },
+    handleModalOpen () {
+      this.$emit('open')
+      document.body.style.overflow = 'hidden'
     }
   }
 }
@@ -164,12 +168,12 @@ export default {
     }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 376px) {
         .header {
             min-width: 375px;
             padding: 40px 0px 40px 37px;
-            margin-bottom: 101px;
             margin: 0 auto;
+            margin-bottom: 101px;
             &__container {
                 max-width: 293px;
             }

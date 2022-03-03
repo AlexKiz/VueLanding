@@ -106,7 +106,12 @@
                             System Integration
                         </div>
                     </div>
-                    <div class='item-mobile__arrow'></div>
+                    <div v-if="isSystemIntegrationOpen" @click="handleSystemIntegrationOpen()" class='item-mobile__arrowReverse'></div>
+                    <div v-else @click="handleSystemIntegrationOpen()" class='item-mobile__arrow'></div>
+                    <div v-if="isSystemIntegrationOpen" class='info-mobile__text'>
+                            We help you with educating employees and
+                            integrating software in your running processes
+                    </div>
                 </div>
                 <div class='item-mobile'>
                     <div class='item__info-mobile info-mobile'>
@@ -114,7 +119,13 @@
                             Technical support
                         </div>
                     </div>
-                    <div class='item-mobile__arrow'></div>
+                    <div v-if="isTechnicalSupportOpen" @click="handleTechnicalSupportOpen()" class='item-mobile__arrowReverse'></div>
+                    <div v-else @click="handleTechnicalSupportOpen()" class='item-mobile__arrow'></div>
+                    <div v-if="isTechnicalSupportOpen" class='info-mobile__text'>
+                            We guarantee support and product maintenance
+                            after release and keep improving the system in
+                            cooperation with your team
+                    </div>
                 </div>
                 <div class='item-mobile'>
                     <div class='item-mobile__info info-mobile'>
@@ -122,7 +133,12 @@
                             Data security
                         </div>
                     </div>
-                    <div class='item-mobile__arrow'></div>
+                    <div v-if="isDataSecurityOpen" @click="handleDataSecurityOpen()" class='item-mobile__arrowReverse'></div>
+                    <div v-else @click="handleDataSecurityOpen()" class='item-mobile__arrow'></div>
+                    <div v-if="isDataSecurityOpen" class='info-mobile__text'>
+                            Your data is stored on secure servers based in
+                            Germany (or any other country on your request)
+                    </div>
                 </div>
                 <div class='item-mobile'>
                     <div class='item-mobile__info info-mobile'>
@@ -130,7 +146,12 @@
                             We speak your language
                         </div>
                     </div>
-                    <div class='item-mobile__arrow'></div>
+                    <div v-if="isLanguageOpen" @click="handleLanguageOpen()" class='item-mobile__arrowReverse'></div>
+                    <div v-else @click="handleLanguageOpen()" class='item-mobile__arrow'></div>
+                    <div v-if="isLanguageOpen" class='info-mobile__text'>
+                        Our managers are German- and English-speaking,
+                        so the business communication is clear and easy
+                    </div>
                 </div>
                 <div class='item-mobile'>
                     <div class='item-mobile__info info-mobile'>
@@ -138,7 +159,13 @@
                             Representative in Germany
                         </div>
                     </div>
-                    <div class='item-mobile__arrow'></div>
+                    <div v-if="isGermanyOpen" @click="handleGermanyOpen()" class='item-mobile__arrowReverse'></div>
+                    <div v-else @click="handleGermanyOpen()" class='item-mobile__arrow'></div>
+                    <div v-if="isGermanyOpen" class='info-mobile__text'>
+                        Our business analyst is based in Frankfurt am Main.
+                        Discussing all the business issues in person is much
+                        more efficient
+                    </div>
                 </div>
                 <div class='item-mobile'>
                     <div class='item-mobile__info info-mobile'>
@@ -146,7 +173,13 @@
                             5 years experience in logistics
                         </div>
                     </div>
-                    <div class='item-mobile__arrow'></div>
+                    <div v-if="isLogisticsOpen" @click="handleLogisticsOpen()" class='item-mobile__arrowReverse'></div>
+                    <div v-else @click="handleLogisticsOpen()" class='item-mobile__arrow'></div>
+                    <div v-if="isLogisticsOpen" class='info-mobile__text'>
+                        We’ve successfully implemented custom logistics/
+                        transportation/stock and order management
+                        systems
+                    </div>
                 </div>
             </div>
         </div>
@@ -200,7 +233,61 @@
 
 <script>
 export default {
-  name: 'AdvantagesSection'
+  name: 'AdvantagesSection',
+  data () {
+    return {
+      isSystemIntegrationOpen: false,
+      isTechnicalSupportOpen: false,
+      isDataSecurityOpen: false,
+      isLanguageOpen: false,
+      isGermanyOpen: false,
+      isLogisticsOpen: false
+    }
+  },
+  methods: {
+    handleSystemIntegrationOpen () {
+      if (this.isSystemIntegrationOpen) {
+        this.isSystemIntegrationOpen = false
+      } else {
+        this.isSystemIntegrationOpen = true
+      }
+    },
+    handleTechnicalSupportOpen () {
+      if (this.isTechnicalSupportOpen) {
+        this.isTechnicalSupportOpen = false
+      } else {
+        this.isTechnicalSupportOpen = true
+      }
+    },
+    handleDataSecurityOpen () {
+      if (this.isDataSecurityOpen) {
+        this.isDataSecurityOpen = false
+      } else {
+        this.isDataSecurityOpen = true
+      }
+    },
+    handleLanguageOpen () {
+      if (this.isLanguageOpen) {
+        this.isLanguageOpen = false
+      } else {
+        this.isLanguageOpen = true
+      }
+    },
+    handleGermanyOpen () {
+      if (this.isGermanyOpen) {
+        this.isGermanyOpen = false
+      } else {
+        this.isGermanyOpen = true
+      }
+    },
+    handleLogisticsOpen () {
+      if (this.isLogisticsOpen) {
+        this.isLogisticsOpen = false
+      } else {
+        this.isLogisticsOpen = true
+      }
+    }
+  }
 }
 </script>
 
@@ -372,7 +459,7 @@ section {
     }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 376px) {
     section {
         margin-bottom: 93px;
         .wrapper {
@@ -412,6 +499,8 @@ section {
         .item-mobile {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
             padding-right: 40px;
             padding-left: 15px;
 
@@ -423,17 +512,39 @@ section {
                 background-size: auto auto;
                 background-repeat: no-repeat;
                 padding-bottom: 5px;
+                margin-bottom: 22px;
+            }
+            &__arrowReverse {
+                width: 24px;
+                height: 24px;
+                background-image: url('../assets/img/advantages/pin-left-reverse.png');
+                background-position: center;
+                background-size: auto auto;
+                background-repeat: no-repeat;
+                padding-bottom: 5px;
+                margin-bottom: 22px;
             }
         }
 
         .info-mobile {
+
             &__title {
                 font-family: 'Catamaran', sans-serif;
                 font-size: 21px;
                 font-weight: 900;
                 letter-spacing: -0.53px;
 
+                vertical-align: center;
                 margin-bottom: 22px;
+            }
+            &__text {
+                width: 345px;
+                margin-bottom: 20px;
+
+                font-family: 'Open Sans', sans-serif;
+                font-size: 15px;
+                line-height: normal;
+                letter-spacing: -0.38px;
             }
         }
 

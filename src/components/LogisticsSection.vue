@@ -2,10 +2,12 @@
     <section class='section'>
             <div class='section__content content'>
                 <div class='content__scroll'>
-                    <img  src='../assets/img/logistics/scroll-down-arrow.png' alt='arrow'/>
-                    <div class='content__scroll_text'>
-                        Scroll for more information
-                    </div>
+                    <a href='#benefit'>
+                        <img  src='../assets/img/logistics/scroll-down-arrow.png' alt='arrow'/>
+                        <div class='content__scroll_text'>
+                            Scroll for more information
+                        </div>
+                    </a>
                 </div>
                 <div class='content__info'>
                     <div class='content__title'>
@@ -19,7 +21,7 @@
                         digitalization.</span>
                     </div>
                     <div class='content__button'>
-                        <button>
+                        <button @click="handleModalOpen()">
                             <span>Request&nbsp;&nbsp;a free consultation</span>
                         </button>
                     </div>
@@ -32,7 +34,13 @@
 
 <script>
 export default {
-  name: 'LogisticsSectionTest'
+  name: 'LogisticsSectionTest',
+  methods: {
+    handleModalOpen () {
+      this.$emit('open')
+      document.body.style.overflow = 'hidden'
+    }
+  }
 }
 </script>
 
@@ -61,6 +69,13 @@ export default {
         min-width: 207px;
         transform: rotate(-90deg);
         margin: 39px -20px 0 -40px;
+        cursor: pointer;
+        a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-width: 207px;
+        }
 
         &_text {
             opacity: 0.5;
@@ -186,7 +201,7 @@ export default {
     }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 376px) {
     .section {
         min-width: 375px;
         margin-bottom: -190px;

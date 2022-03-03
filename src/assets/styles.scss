@@ -1,20 +1,191 @@
-@import './variables.scss';
+@import "./variables.scss";
 @import "../../node_modules/bootstrap/scss/bootstrap-grid.scss";
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 ul {
-    padding: 0;
+  padding: 0;
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
-.action-open {
-    height: 600px;
-    overflow: hidden;
-    position: fixed;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+.content__cards {
+  .carousel__prev {
+    width: 70px;
+    height: 70px;
+    border-radius: 0;
+    font-size: 0;
+    content: none;
+    background: url("../assets/img/issue/next-button.png");
+    transform: scaleX(-1);
+    margin: 368px 0 0 0px;
     top: 0;
     left: 0;
+  }
+
+  .carousel__next {
+    margin: 403px 0 0 35px;
+    border-radius: 0;
+    width: 70px;
+    height: 70px;
+    font-size: 0;
+    content: none;
+    background: url("../assets/img/issue/next-button.png");
+    top: 0;
+    left: 0;
+  }
+
+  .carousel__pagination-button {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: black;
+    opacity: 0.125;
+    margin-right: 15px;
+    margin-left: 0;
+  }
+
+  .carousel__pagination-button--active {
+    opacity: 1;
+  }
+
+  .disable {
+    opacity: 0.125;
+  }
+
+  .carousel__pagination {
+    margin-left: -210px;
+    margin-bottom: 169px;
+  }
+
+  .carousel__pagination-item {
+    &:nth-child(4) {
+      z-index: 0;
+      margin-left: -90px;
+    }
+  }
+}
+
+.carousel__content {
+  .carousel__prev {
+    width: 70px;
+    height: 70px;
+    border-radius: 0;
+    font-size: 0;
+    content: none;
+    background: url("../assets/img/issue/next-button.png");
+    transform: scaleX(-1);
+    margin: -75px 0 0 176px;
+    top: 0;
+    left: 0;
+  }
+
+  .carousel__next {
+    margin: -39px 0 0 411px;
+    border-radius: 0;
+    width: 70px;
+    height: 70px;
+    font-size: 0;
+    content: none;
+    background: url("../assets/img/issue/next-button.png");
+    top: 0;
+    left: 0;
+  }
+
+  .carousel__pagination-button {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: black;
+    opacity: 0.125;
+    margin-right: 17px;
+    margin-left: 0;
+  }
+
+  .carousel__pagination-button--active {
+    opacity: 1;
+  }
+
+  .disable {
+    opacity: 0.125;
+  }
+
+  .carousel__pagination {
+    margin-top: -572px;
+    margin-left: 135px;
+  }
+  .carousel__pagination-item {
+    &:nth-child(4) {
+      z-index: 0;
+      margin-left: -90px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .content__cards {
+    .carousel__pagination-item {
+      &:nth-child(4) {
+        z-index: 1;
+        margin-left: 0;
+      }
+    }
+    .carousel__pagination {
+      margin-left: -220px;
+    }
+  }
+
+  .carousel__content {
+    .carousel__prev {
+      margin: -74px 0 0 -12px;
+    }
+
+    .carousel__next {
+      margin: -38px 0 0 223px;
+    }
+    .carousel__pagination {
+      margin-top: -440px;
+      margin-left: -53px;
+    }
+  }
+}
+
+@media (max-width: 376px) {
+  .content__cards {
+    .carousel__prev {
+      margin: 375px 0 0 235px;
+    }
+
+    .carousel__next {
+      margin: 410px 0 0 270px;
+    }
+    .carousel__pagination {
+      margin-left: -170px;
+    }
+  }
+
+  .carousel__content {
+    .carousel__prev {
+      margin: -74px 0 0 -1px;
+    }
+
+    .carousel__next {
+      margin: -39px 0 0 239px;
+    }
+    .carousel__pagination {
+      margin-top: -442px;
+      margin-left: -24px;
+    }
+  }
 }

@@ -1,68 +1,37 @@
 <template>
-<section>
+<section class='section'>
     <div class='content wrapper row'>
         <div class='content__title col-10 offset-1'>
             Have you experienced any of these issues?
         </div>
+
         <div class='content__cards offset-1'>
-            <div class='card'>
-                <div class='card__title'>
-                    Overwhelming and<br>
-                    inaccurate paperwork
-                </div>
-                <div class='card__text'>
-                    Most documents, such as orders, invoices,
-                    contracts, etc. are stored in folders on endless
-                    shelves. They are never easy to find.
-                    Moreover, due to human factor, crucial
-                    mistakes take place that cost your company
-                    much time to solve, but also drain your
-                    budget.
-                </div>
-            </div>
-            <div class='card'>
-                <div class='card__title'>
-                    Manual order management<br>
-                    based on phone calls and emails
-                </div>
-                <div class='card__text'>
-                    Do your clients call you just to find out that
-                    the necessary product is currently out of
-                    stock? You waste resources by not providing
-                    them with actual information about your
-                    available inventory online
-                </div>
-            </div>
-            <div class='card'>
-                <div class='card__title'>
-                    Inefficient truck load
-                </div>
-                <div class='card__text'>
-                    Without dynamic truck load
-                    scheduling, your company misses up
-                    to 50% of the potential loading
-                    capability
-                </div>
-            </div>
+            <Carousel
+                :breakpoints="breakpoints"
+                :snapAlign = 'center-1-2'
+                :items-to-show="2.5"
+                :transition = "300"
+                :wrapAround = "true"
+            >
+                <Slide v-for="slide in slides" :key="slide">
+                    <div class='card'>
+                        <div class='card__title'>
+                            {{slide.title}}
+                            <br>
+                            {{slide.subTitle}}
+                        </div>
+                        <div class='card__text'>
+                            {{slide.text}}
+                        </div>
+                    </div>
+                </Slide>
+                <template #addons>
+                    <Pagination />
+                    <Navigation />
+                </template>
+            </Carousel>
         </div>
-        <div class='cards__action action col-6 offset-1'>
-            <div class='action__arrows'>
-                <div>
-                    <img  src='../assets/img/issue/prev-button.png' alt='prev'/>
-                </div>
-                <div>
-                    <img  src='../assets/img/issue/next-button.png' alt='next'/>
-                </div>
-            </div>
-            <div  class='action__dots'>
-                <div class='dot dot__active'></div>
-                <div class='dot'></div>
-                <div class='dot'></div>
-                <div class='dot dot__adaptive'></div>
-                <div class='dot dot__adaptive'></div>
-                <div class='dot dot__adaptive'></div>
-            </div>
-        </div>
+
     </div>
     <div class='wrapper row'>
         <div class='percent col-10 offset-1'>
@@ -79,13 +48,101 @@
 </template>
 
 <script>
+import { Carousel, Slide, Navigation, Pagination } from 'vue3-carousel'
+import 'vue3-carousel/dist/carousel.css'
 export default {
-  name: 'IssuesSection'
+  name: 'IssuesSection',
+  data: function () {
+    return {
+      slides: [
+        {
+          title: 'Overwhelming and',
+          subTitle: 'inaccurate paperwork',
+          text: `Most documents, such as orders, invoices,
+                            contracts, etc. are stored in folders on endless
+                            shelves. They are never easy to find.
+                            Moreover, due to human factor, crucial
+                            mistakes take place that cost your company
+                            much time to solve, but also drain your
+                            budget.`,
+          key: 1
+        },
+        {
+          title: 'Manual order management',
+          subTitle: 'based on phone calls and emails',
+          text: `Do your clients call you just to find out that
+                            the necessary product is currently out of
+                            stock? You waste resources by not providing
+                            them with actual information about your
+                            available inventory online`,
+          key: 2
+        },
+        {
+          title: 'Inefficient truck load',
+          subTitle: '',
+          text: `Without dynamic truck load
+                            scheduling, your company misses up
+                            to 50% of the potential loading
+                            capability`,
+          key: 3
+        },
+        {
+          title: 'Overwhelming and',
+          subTitle: 'inaccurate paperwork',
+          text: `Most documents, such as orders, invoices,
+                            contracts, etc. are stored in folders on endless
+                            shelves. They are never easy to find.
+                            Moreover, due to human factor, crucial
+                            mistakes take place that cost your company
+                            much time to solve, but also drain your
+                            budget.`,
+          key: 4
+        },
+        {
+          title: 'Manual order management',
+          subTitle: 'based on phone calls and emails',
+          text: `Do your clients call you just to find out that
+                            the necessary product is currently out of
+                            stock? You waste resources by not providing
+                            them with actual information about your
+                            available inventory online`,
+          key: 5
+        },
+        {
+          title: 'Inefficient truck load',
+          subTitle: '',
+          text: `Without dynamic truck load
+                            scheduling, your company misses up
+                            to 50% of the potential loading
+                            capability`,
+          key: 6
+        }
+      ],
+      breakpoints: {
+        769: {
+          itemsToShow: '2.5'
+        },
+        376: {
+          itemsToShow: '1.95'
+        },
+        0: {
+          itemsToShow: '1.001'
+        }
+      }
+    }
+  },
+  components: {
+    Carousel,
+    Slide,
+    Navigation,
+    Pagination
+  }
 }
 </script>
 
 <style scoped lang="scss">
-section {
+
+.section {
     max-width: 1440px;
     margin: 0 auto;
     padding: 52px 0 0 0;
@@ -112,18 +169,30 @@ section {
         }
 
         &__cards {
+            overflow: hidden;
             display: flex;
             flex-direction: row;
         }
     }
+    .carousel__slide {
+        min-width: 0;
+    }
+    .carousel {
+        min-width: 0;
+    }
 
+    .prev {
+        transform: scaleX(-1);
+    }
     .card {
         height: 368px;
-        min-width: 420px;
+        min-width: 435px;
+        max-width: 435px;
         padding: 67px 37px 68px 38px;
         background-color: #083d77;
         margin-right: 15px;
         box-sizing: border-box;
+        text-align: start;
         &__title {
             height: 50px;
             font-family: 'Open Sans', sans-serif;
@@ -205,7 +274,7 @@ section {
 }
 
 @media (max-width: 768px) {
-    section {
+    .section {
         min-width: 768px;
         margin-bottom: 130px;
 
@@ -225,6 +294,7 @@ section {
 
         .card {
             min-width: 375px;
+            max-width: 375px;
             padding: 87px 15px;
             &__title {
                 width: 345px;
@@ -265,8 +335,8 @@ section {
     }
 }
 
-@media (max-width: 375px) {
-    section {
+@media (max-width: 376px) {
+    .section {
         min-width: 375px;
         margin-bottom: 164.8px;
 
@@ -292,7 +362,8 @@ section {
 
         .card {
             height: 375px;
-            min-width: 375px;
+            min-width: 376px;
+            max-width: 376px;
             padding: 92px 30px;
 
             &__title {
