@@ -9,7 +9,7 @@
             <li class='menu__item'>Achievements</li>
         </nav>
         <div class='header__language language'>
-            <li class='language__item'>DE</li>
+            <li class='language__item language__item_opacity'>DE</li>
             <li class='language__item'>EN</li>
         </div>
         <div class='header__menu-mobile' @click="isOpen()">
@@ -33,7 +33,7 @@
         <div class='menu-mobile__language language-mobile'>
             <div class='language-mobile__text'>Language</div>
             <div class='language-mobile__lang'>
-                <div class='language-mobile__lang_item'>DE</div>
+                <div class='language-mobile__lang_item language-mobile_opacity'>DE</div>
                 <div class='language-mobile__lang_item'>EN</div>
             </div>
         </div>
@@ -132,6 +132,9 @@ export default {
         display: flex;
         justify-content: center;
         cursor: pointer;
+        &_opacity {
+            opacity: 0.4;
+        }
     }
 }
 
@@ -168,7 +171,7 @@ export default {
     }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 380px) {
         .header {
             min-width: 375px;
             padding: 40px 0px 40px 37px;
@@ -268,6 +271,9 @@ export default {
             &_item {
                 width: 56px;
             }
+        }
+        &_opacity {
+            opacity: 0.4;
         }
     }
 
