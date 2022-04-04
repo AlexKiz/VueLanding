@@ -349,7 +349,7 @@ section {
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 391px) {
     section {
         margin-bottom: 170px;
 

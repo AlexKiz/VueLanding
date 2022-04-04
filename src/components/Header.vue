@@ -171,7 +171,7 @@ export default {
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 391px) {
         .header {
             min-width: 375px;
             padding: 40px 0px 40px 37px;

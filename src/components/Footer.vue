@@ -102,7 +102,7 @@ footer {
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 391px) {
     footer {
         height: 208px;
         width: 375px;

@@ -258,7 +258,7 @@ export default {
     display: none;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 391px) {
     .modal {
         width: 345px;
         padding: 44px 25px 38px 25px;

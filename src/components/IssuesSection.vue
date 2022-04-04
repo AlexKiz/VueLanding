@@ -335,7 +335,7 @@ export default {
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 391px) {
     .section {
         min-width: 375px;
         margin-bottom: 164.8px;
